@@ -1,0 +1,15 @@
+@font-face {
+	font-family: header;
+  src: url("../fonts/colors_of_autumn.ttf") format("truetype")}
+  
+  h1
+  {
+    font-family: header;
+  }
+
+  .main
+  {
+    text-align: center;
+    font-size: 20px;
+    margin-top: 200px;
+  }
