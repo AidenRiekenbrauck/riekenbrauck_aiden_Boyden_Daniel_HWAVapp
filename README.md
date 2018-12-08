@@ -2,8 +2,8 @@
 audio visual app
 
 ## Design
-··* Illustrator
-··* Photoshop
+* Illustrator
+* Photoshop
 
 ## Development
 * Vue.js	
