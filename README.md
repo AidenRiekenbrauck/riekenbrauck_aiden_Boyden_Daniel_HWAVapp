@@ -2,13 +2,13 @@
 audio visual app
 
 ## Design
-贩* Illustrator
-贩* Photoshop
+路路* Illustrator
+路路* Photoshop
 
 ## Development
-贩* Vue.js	
-贩* Sass
-贩* Ajax
+* Vue.js	
+* Sass
+* Ajax
 
 > When compressing Scss with Visual Studio Code, input sass --watch sass:css --style compressed into terminal
 
