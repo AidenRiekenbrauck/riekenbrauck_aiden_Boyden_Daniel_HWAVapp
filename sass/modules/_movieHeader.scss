@@ -1,0 +1,49 @@
+@import url(https://fonts.googleapis.com/css?family=Josefin+Sans:400,700);
+
+
+.movieHeader
+{
+    height: 100vh;
+    font-family: 'Josefin Sans', sans-serif; 
+    z-index: 3000;
+}
+
+
+
+.movieBckgrd
+{
+   
+    position: absolute;
+    width: 100%;
+    overflow: hidden;
+   background-color: black;
+    overflow: hidden;
+    height: 100vh;
+    text-align: center;
+}
+
+
+
+.movieBckgrd img
+{
+    width: 100vw;
+
+    position: absolute;
+    
+    top: 0;
+    
+    left: 0;
+}
+
+
+.movieDetails{
+    margin-top: 70vh;
+    padding: 0% 10%;
+    opacity: .5;
+    transition-duration: .4s;
+}
+
+
+.movieDetails:hover{
+    opacity: 1;
+}
