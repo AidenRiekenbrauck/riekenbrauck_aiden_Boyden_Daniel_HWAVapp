@@ -8,26 +8,21 @@
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
   <link rel="stylesheet" href="css/master.css">
-
+  <link rel="stylesheet" href="css/animate.css">
+<link rel="stylesheet" href="css/bootstrap.css">
+	<link href="css/font-awesome.min.css" rel="stylesheet">
   <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js" integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ" crossorigin="anonymous"></script>
 
   <script src="https://unpkg.com/vue"></script>
   <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
 </head>
 <body>
-  <main id="app">
+  <main id="app" style="position: relative;z-index: 2;">
 	<div class="container-fluid">
 		<div class="row">
 			<header class="col-sm-12 fixed-top">
 				
-				<nav class="float-right">
-				<ul>
-					<!-- <li>Kids</li> -->            
-					<li v-if="authenticated"><i class="fas fa-user-circle"></i></li>
-					<li v-if="administrator"><i class="fas fa-cog"></i></li>
-					<li v-if="authenticated" v-on:click="logout()"><i class="fas fa-power-off"></i></li>					
-				</ul>
-				</nav>
+				
 			</header>
 		</div>
 		
@@ -62,5 +57,10 @@
 	<script>
 		$('.toast').toast();
 	</script>
+
+<script src="js/wow.min.js"></script>
+<script>
+new WOW().init();
+</script>
 </body>
 </html>

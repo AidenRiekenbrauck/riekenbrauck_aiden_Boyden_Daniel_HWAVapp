@@ -13,37 +13,26 @@
 .movieBckgrd
 {
    
-    position: absolute;
+
     width: 100%;
     overflow: hidden;
-   background-color: black;
     overflow: hidden;
-    height: 100vh;
+    margin: 0 auto;
     text-align: center;
+    background-color: black;
 }
 
 
 
-.movieBckgrd img
-{
-    width: 100vw;
-
-    position: absolute;
-    
-    top: 0;
-    
-    left: 0;
-}
 
 
-.movieDetails{
-    margin-top: 70vh;
-    padding: 0% 10%;
-    opacity: .5;
-    transition-duration: .4s;
-}
 
 
-.movieDetails:hover{
-    opacity: 1;
+.belowHeader{
+    width: 100%;
+    margin: 0 auto;
+    background-color: white;
+    overflow: hidden;
+    text-align: center;
+    margin-top: 100vh;
 }

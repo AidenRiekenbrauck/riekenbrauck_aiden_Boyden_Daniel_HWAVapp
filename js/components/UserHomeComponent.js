@@ -3,93 +3,117 @@ export default {
 
     template: `
     <div>
-    <header class="col-sm-12 fixed-top">
-			
-    <nav>
-    <div class="wrapper">
-<!-- <input type="text" placeholder="search..."> -->
-
-<input type="checkbox" id="button" />
-<label for="button"></label>
-
-<div id="cover"></div>
-<div id="border-top"></div>
-<div id="border-left"></div>
-<div id="border-right"></div>
-<div id="border-bottom"></div>
-
-<div id="nav">
-<ul>
-<li><a href="#" id="products">Home</a></li>
-<li><a href="#" id="services">Users</a></li>
-<li><a href="#" id="menu"></a></li>
-<li><a href="#" id="about">Kids</a></li>
-<li><a href="#" id="contact">Settings</a></li>
-</ul>
-</div>
-
-<div id="nav2">
-<ul>
-<li id="bottomNav1" v-for="media in mediaTypes" :data-type="media.description" @click="loadMedia(null, media.description)">
-<a>
-    <i v-bind:class="[media.iconClass]"></i>
-</a>
-
-</li>
-</ul>
-</div>
-
-</div>
-    </nav>
-</header>
+    <link rel="stylesheet" href="css/style.css">
     <!-- render this if we're viewing television or film -->
+                                                                                    <header class="col-sm-12 fixed-top">
+                                                                                                                                                                                    
+                                                                                    <nav>
+                                                                                    <div class="wrapper">
+                                                                                <!-- <input type="text" placeholder="search..."> -->
+
+                                                                                <input type="checkbox" id="button" />
+                                                                                <label for="button"></label>
+
+                                                                                <div id="cover"></div>
+                                                                                <div id="border-top"></div>
+                                                                                <div id="border-left"></div>
+                                                                                <div id="border-right"></div>
+                                                                                <div id="border-bottom"></div>
+
+                                                                                <div id="nav">
+                                                                                <ul>
+                                                                                <li><a href="#" id="products">Home</a></li>
+                                                                                <li><a href="#" id="services">Users</a></li>
+                                                                                <li><a href="#" id="menu"></a></li>
+                                                                                <li><a href="#" id="about">Kids</a></li>
+                                                                                <li><a href="#" id="contact">Settings</a></li>
+                                                                                </ul>
+                                                                                </div>
+
+                                                                                <div id="nav2">
+                                                                                <ul>
+                                                                                <li id="bottomNav1" v-for="media in mediaTypes" :data-type="media.description" @click="loadMedia(null, media.description)">
+                                                                                <a>
+                                                                                    <i v-bind:class="[media.iconClass]"></i>
+                                                                                </a>
+
+                                                                                </li>
+                                                                                </ul>
+                                                                                </div>
+
+                                                                                </div>
+                                                                                    </nav>
+                                                                                </header>
 
 
 
 
+    
 
-    <!-- placeholder header -->
-    <div class="movieHeader" >
 
+
+<div class="main-top" id="home">
+	
+
+		<!-- banner -->
+		<div class="banner_w3lspvt">
+			<div class="csslider infinity" id="slider1">
+				<ul class="banner_slide_bg">
+					<li class="slider-style">
+						<div class="container-fluid">
+							<div class="w3ls_banner_txt text-right ml-auto pr-xl-5 pr-3">
+                                <h4 class="w3ls_pvt-title text-bl text-uppercase let mb-3"">{{currentMediaDetails.movies_title}}</h4>
+                                <h4 class="w3ls_pvt-title text-bl text-uppercase let mb-3"">{{currentMediaDetails.audio_artist}}  {{currentMediaDetails.audio_title}}</h4>
+                                <p class="media-details col-sm-12" v-html="currentMediaDetails.audio_storyline"> {{currentMediaDetails.audio_storyline}}</p>
+                                <p class="media-details col-sm-12" v-html="currentMediaDetails.movies_storyline"></p>
+								<a href="#about" class="btn button-style mt-sm-5 mt-4">Watch Now</a>
+								
+								
+							</div
+						</div>
+					</li>
+					
+				</ul>
+
+			</div>
+			<div class="banner-left-grids">
+				<div class="d-flex">
+                    <div class="col-xl-2 col-md-3 col-sm-4 col-6 w3pvt-grids-1">
+                        <h5 class="media-time text-wh font-weight-bold let mb-2">{{currentMediaDetails.movies_runtime}}</h5>
+                       
+					</div>
+                    <div class="col-xl-2 col-md-3 col-sm-4 col-6 w3pvt-grids-1 pl-4">
+                    <h5 class="media-year text-wh font-weight-bold let mb-2">{{currentMediaDetails.movies_year}}</h5>   
+                        <h5 class="media-year text-wh font-weight-bold let mb-2">{{currentMediaDetails.audio_year}}</h5>  
+                           
+					
+					</div>
+					<div class="col-xl-8 col-md-6 col-sm-4 w3pvt-grids-2">
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- //banner -->
+	</div>
+	<!-- //main banner -->
+
+<div class="belowHeader wow slideInLeft" data-wow-duration="2s" data-wow-delay="5s" style="z-index: 20;">
     <div class="movieBckgrd">
     <video autoplay controls muted :src="'video/' + currentMediaDetails.movies_trailer" class="fs-video"></video>
-            <img :src="'images/audio/' + currentMediaDetails.audio_cover" alt="album art" class="img-fluid"/>
-    </div
-
-    <div v-if="activeMediaType == 'video' && retrievedMedia.length > 0" >
-    <div class="media-container movieDetails" >
-        <h4 class="media-title col-lg-8"">{{currentMediaDetails.movies_title}}</h4>
-        <p class="media-details col-sm-12" v-html="currentMediaDetails.movies_storyline"></p>
-        <span class="media-time col-sm-12">{{currentMediaDetails.movies_runtime}}</span>
-        <span class="media-year col-sm-12">Released in {{currentMediaDetails.movies_year}}</span>
+            
     </div>
-
-
-    <!-- Audio details-->
-    <div v-if="activeMediaType == 'audio' && retrievedMedia.length > 0">
-    <div class="media-container movieDetails">
-        <h4  class="media-title col-lg-8">{{currentMediaDetails.audio_artist}} * {{currentMediaDetails.audio_title}}</h4>
-        <p "media-details col-sm-12" v-html="currentMediaDetails.audio_storyline"></p>
-        <span class="media-year col-sm-12">Released in {{currentMediaDetails.audio_year}}</span>              
-    </div>
-
     <div class="audio-wrapper">
-        <audio autoplay controls :src="'audio/' + currentMediaDetails.audio_src"/>
-        
+    
+    <img :src="'images/audio/' + currentMediaDetails.audio_cover" alt="album art" class="img-fluid"/>
+    <audio autoplay controls :src="'audio/' + currentMediaDetails.audio_src"/>
     </div>
-</div>
 
-</div>
+
+
 
 
 
 <div class="row"> <!-- 2-up for nav and media info -->
-
-
-<!-- end of mainHeader -->
-    </div>
-       
-
             <div class="media-info center">
                 <!-- genres for video -->
                     <ul v-if="activeMediaType == 'video'" class="media-genres">
@@ -128,15 +152,10 @@ export default {
                             <a href="horror" @click.prevent="loadMedia(null, 'audio')">All</a>
                         </li>
                     </ul>
-                <div class="thumbs-wrapper clearfix" style="background-color: black;" >
-
-
-
-
-
-                
+                <div class="thumbs-wrapper clearfix" style="border: 60px solid black;" >
                     <img v-if="activeMediaType == 'video'" v-for="media in retrievedMedia" :src="'images/video/' + media.movies_cover" alt="media thumb" @click="switchActiveMedia(media)" class="img-thumbnail rounded center-block media-thumb">
                    <div class="audioThumbSize"> <img v-if="activeMediaType == 'audio'" v-for="media in retrievedMedia" :src="'images/audio/' + media.audio_cover" alt="media thumb" @click="switchActiveMedia(media)" class="img-thumbnail rounded center-block media-thumb audio-thumb"><div>
+                </div>
                 </div>
             </div>       
         </div> <!-- end 2-up for media info -->

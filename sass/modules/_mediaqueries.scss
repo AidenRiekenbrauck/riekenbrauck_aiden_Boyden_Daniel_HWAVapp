@@ -1,8 +1,42 @@
+@media screen and (min-width: 300px) {
+    .movieDetails{
+        margin-top: 50vh;
+        padding: 0% 10%;
+      
+        transition-duration: .4s;
+
+        
+    }
+
+    .audioDetails{
+        margin-top: 50vh;
+        padding: 0% 10%;
+    position: absolute;
+        transition-duration: .4s;
+        top: 0;
+    }
+
+}
 // 768 is tablet @ portait
 
 @media screen and (min-width: 768px) {
     .user-message {
         font-size: 2.5rem;
+    }
+
+    .movieDetails{
+        margin-top: 50vh;
+        padding: 0% 10%;
+     
+        transition-duration: .4s;
+    }
+
+    .audioDetails{
+        margin-top: 50vh;
+        padding: 0% 10%;
+    position: absolute;
+        transition-duration: .4s;
+        top: 0;
     }
 
  
@@ -59,4 +93,23 @@
     
         li:last-of-type { border-bottom: none; }
     }
+
+    .movieDetails{
+        margin-top: 70vh;
+        padding: 0% 10%;
+    
+        transition-duration: .4s;
+    }
+
+    .audioDetails{
+        margin-top: 70vh;
+        padding: 0% 10%;
+    position: absolute;
+        transition-duration: .4s;
+        top: 0;
+    }
+    
 }
+
+
+

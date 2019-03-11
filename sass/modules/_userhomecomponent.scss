@@ -85,22 +85,55 @@
 .thumbs-wrapper
 {
     width: 100%;
-    background-color: black;
 }
 
-.audio-thumb { height: 150px; }
+.audio-thumb { height: 150px !important; }
 
 .audio-wrapper {
-    background: $dark-bg;
+    width: 100%;
 
-    img { max-width: 85%; display: block; margin: 0 auto; padding: 4% }
+margin: 0 auto;
+
+position: fixed;
+
+bottom: 0;
+
+left: 0;
+
+right: 0;
+
+text-align: center;
+
+height: 40px;
+
+background-color: rgb(26, 26, 26);
+    img { width: 40px;
+
+        display: block;
+        
+        margin: 0 auto;
+        
+        height: 40px;
+        
+        position: fixed;
+        
+        bottom: 0;
+        
+        right: 0;}
 
 }
 
 audio {
-    width: 100%;
-    position: absolute;
-    bottom: 0;
-    opacity: 1;
+    width: 95%;
+
+bottom: 0;
+
+opacity: 1;
+
+position: fixed;
+
+bottom: 0;
+
+left: 0;
 }
 
