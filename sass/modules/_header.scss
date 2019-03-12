@@ -33,7 +33,7 @@ body, html {
   }
   
   #nav2{
-    margin-bottom: 15px;
+    margin-bottom: 15px; text-align: center;
   }
   #nav2 ul {
     list-style:none;
@@ -83,7 +83,9 @@ body, html {
   #about    { left: 60%; }
   #contact  { left: 80%; }
   #bottomNav1  { 
-      padding: 0 16.5%;
+    padding: 0 10%;
+
+    text-align: center;
     
     ; }
  
@@ -147,7 +149,7 @@ body, html {
   #button:checked ~ #nav a {top: 15px;
   }
   
-  #button:checked ~ #nav2 a {bottom: 15px;
+  #button:checked ~ #nav2 a {bottom: 15px; 
   }
   
   #button:checked ~ #cover {
