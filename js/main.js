@@ -3,14 +3,18 @@ import UsersComponent from './components/UsersComponent.js';
 import LoginComponent from './components/LoginComponent.js';
 import AdminComponent from './components/AdminComponent.js';
 import UserHomeComponent from './components/UserHomeComponent.js';
+import UserAudioComponent from './components/UserAudioComponent.js';
+import CreateComponent from './components/CreateComponent.js';
 
 let router = new VueRouter({
 
   routes: [
       { path: '/', redirect: { name: "login"} },
       { path: '/login', name: "login", component: LoginComponent },
+      { path: '/create', name: "create", component: CreateComponent },
       { path: '/users', name: 'users', component: UsersComponent },
       { path: '/userhome', name: "home", component: UserHomeComponent, props: true },
+      { path: '/useraudio', name: "audio", component: UserAudioComponent},
       { path: '/admin', name: 'admin', component: AdminComponent }
   ]
 });

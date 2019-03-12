@@ -80,10 +80,10 @@ export default {
 					<li class="slider-style">
 						<div class="container-fluid">
 							<div class="w3ls_banner_txt text-right ml-auto pr-xl-5 pr-3">
-                                <h4 class="w3ls_pvt-title text-bl text-uppercase let mb-3"">{{currentMediaDetails.movies_title}}</h4>
+                                
                                 <h4 class="w3ls_pvt-title text-bl text-uppercase let mb-3"">{{currentMediaDetails.audio_artist}}  {{currentMediaDetails.audio_title}}</h4>
                                 <p class="media-details col-sm-12" v-html="currentMediaDetails.audio_storyline"> {{currentMediaDetails.audio_storyline}}</p>
-                                <p class="media-details col-sm-12" v-html="currentMediaDetails.movies_storyline"></p>
+                               
 								<a href="#about" class="btn button-style mt-sm-5 mt-4">Watch Now</a>
 								
 								
@@ -97,11 +97,11 @@ export default {
 			<div class="banner-left-grids">
 				<div class="d-flex">
                     <div class="col-xl-2 col-md-3 col-sm-4 col-6 w3pvt-grids-1">
-                        <h5 class="media-time text-wh font-weight-bold let mb-2">{{currentMediaDetails.movies_runtime}}</h5>
+                   
                        
 					</div>
                     <div class="col-xl-2 col-md-3 col-sm-4 col-6 w3pvt-grids-1 pl-4">
-                    <h5 class="media-year text-wh font-weight-bold let mb-2">{{currentMediaDetails.movies_year}}</h5>   
+                    
                         <h5 class="media-year text-wh font-weight-bold let mb-2">{{currentMediaDetails.audio_year}}</h5>  
                            
 					
@@ -116,9 +116,10 @@ export default {
 	<!-- //main banner -->
 
 <div class="belowHeader wow slideInLeft" data-wow-duration="2s" data-wow-delay="5s" style="z-index: 20;">
-    <div class="movieBckgrd">
-    <video controls muted :src="'video/' + currentMediaDetails.movies_trailer" class="fs-video"></video>
-            
+    <div class="audio-wrapper">
+    
+    <img :src="'images/audio/' + currentMediaDetails.audio_cover" alt="album art" class="img-fluid"/>
+    <audio autoplay controls :src="'audio/' + currentMediaDetails.audio_src"/>
     </div>
 
 
@@ -129,27 +130,12 @@ export default {
 <div class="row"> <!-- 2-up for nav and media info -->
             <div class="media-info center">
                 <!-- genres for video -->
-                    <ul v-if="activeMediaType == 'video'" class="media-genres">
-                        <li>
-                            <a href="action" @click.prevent="loadMedia('action', null)">Action</a>
-                        </li>
-                        <li>
-                            <a href="comedy" @click.prevent="loadMedia('comedy', null)">Comedy</a>
-                        </li>
-                        <li>
-                            <a href="family" @click.prevent="loadMedia('family', null)">Family</a>
-                        </li>
-                        <li>
-                            <a href="horror" @click.prevent="loadMedia('fantasy', null)">Fantasy</a>
-                        </li>
-                        <li>
-                            <a href="horror" @click.prevent="loadMedia(null, null)">All</a>
-                        </li>
-                    </ul>
+                    <ul v-if="activeMediaType == 'audio'" class="media-genres">
+                 
 
-                <!-- genres for audio -->
-                <ul v-else class="media-genres center">
-                        <li>
+
+
+                         <li>
                             <a href="action" @click.prevent="loadMedia('alternative', null)">Alternative</a>
                         </li>
                         <li>
@@ -165,8 +151,11 @@ export default {
                             <a href="horror" @click.prevent="loadMedia(null, 'audio')">All</a>
                         </li>
                     </ul>
+
+              
+                
                 <div class="thumbs-wrapper clearfix" style="border: 60px solid black;" >
-                    <img v-if="activeMediaType == 'video'" v-for="media in retrievedMedia" :src="'images/video/' + media.movies_cover" alt="media thumb" @click="switchActiveMedia(media)" class="img-thumbnail rounded center-block media-thumb">
+                   
                    <div class="audioThumbSize"> <img v-if="activeMediaType == 'audio'" v-for="media in retrievedMedia" :src="'images/audio/' + media.audio_cover" alt="media thumb" @click="switchActiveMedia(media)" class="img-thumbnail rounded center-block media-thumb audio-thumb"><div>
                 </div>
                 </div>
@@ -179,7 +168,7 @@ export default {
     data() {
         return {
             // set the default to video -> will get a random video via query on create
-            activeMediaType: "video",
+            activeMediaType: "audio",
 
             // push first (or random) media object here (selected / filtered on create)
             currentMediaDetails: { 
@@ -203,7 +192,7 @@ export default {
     created: function() {
         console.log('params:', this.$route.params);
 
-        this.loadMedia(null, "video");
+        this.loadMedia(null, "audio");
     },
 
     methods: {

@@ -1,15 +1,4 @@
-/*--
-Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
---*/
-/* Reset Code */
 
-
-/* //Reset Code */
-
-/* colors code */
 .text-bl {
     color: #343a40;
 }
@@ -36,7 +25,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 a.move-top {
     width: 34px;
     height: 34px;
-    background: url(../images/move-top.png) no-repeat;
     display: inline-block;
     position: fixed;
     bottom: 4%;
@@ -380,45 +368,7 @@ li.call-w3pvt span {
     z-index: 1;
 }
 
-.csslider>ul>li {
-    min-height: 800px;
-}
 
-.csslider>ul>li:first-child {
-    background: url(../images/1.jpg) no-repeat top;
-    background-size: cover;
-    -webkit-background-size: cover;
-    -o-background-size: cover;
-    -moz-background-size: cover;
-    -ms-background-size: cover;
-}
-
-.csslider>ul>li:nth-child(2) {
-    background: url(../images/2.jpg) no-repeat bottom;
-    background-size: cover;
-    -webkit-background-size: cover;
-    -o-background-size: cover;
-    -moz-background-size: cover;
-    -ms-background-size: cover;
-}
-
-.csslider>ul>li:nth-child(3) {
-    background: url(../images/3.jpg) no-repeat bottom;
-    background-size: cover;
-    -webkit-background-size: cover;
-    -o-background-size: cover;
-    -moz-background-size: cover;
-    -ms-background-size: cover;
-}
-
-.csslider>ul>li:last-child {
-    background: url(../images/4.jpg) no-repeat bottom;
-    background-size: cover;
-    -webkit-background-size: cover;
-    -o-background-size: cover;
-    -moz-background-size: cover;
-    -ms-background-size: cover;
-}
 
 .w3ls_banner_txt {
     margin-top: 16em;

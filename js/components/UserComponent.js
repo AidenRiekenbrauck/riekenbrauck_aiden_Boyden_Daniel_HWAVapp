@@ -2,10 +2,11 @@ export default {
     props: ['liveuser'],
 
     template: `
-    <div class="col-xs-12 col-sm-6 col-md-4 mx-auto">
-        <div class="card rounded" @click="navToUserHome()">
-            <div class="card-body text-center">
-                <img :src="'images/' + liveuser.avatar" class="rounded-circle img-fluid">
+    
+    <div class="col-xs-3 col-sm-6 col-md-6 mx-auto">
+        <div class="" @click="navToUserHome()">
+            <div class="card-body text-center box ">
+                <img :src="'images/' + liveuser.avatar" class="img-fluid ">
                 <p>{{ liveuser.username }}</p>
             </div>
         </div>
