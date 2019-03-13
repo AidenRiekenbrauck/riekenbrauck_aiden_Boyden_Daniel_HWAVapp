@@ -51,7 +51,7 @@ export default {
                                                                                 </li>
 
                                                                                 <li id="bottomNav1">
-                                                                                <a href="index.html#/userTV">
+                                                                                <a>
                                                                                 <svg class="svg-inline--fa fa-tv fa-w-20" aria-hidden="true" data-prefix="fas" data-icon="tv" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" data-fa-i2svg=""><path fill="currentColor" d="M592 0H48C21.5 0 0 21.5 0 48v320c0 26.5 21.5 48 48 48h245.1v32h-160c-17.7 0-32 14.3-32 32s14.3 32 32 32h384c17.7 0 32-14.3 32-32s-14.3-32-32-32h-160v-32H592c26.5 0 48-21.5 48-48V48c0-26.5-21.5-48-48-48zm-16 352H64V64h512v288z"></path></svg>
                                                                                 </a>
 
@@ -79,14 +79,14 @@ export default {
 				<ul class="banner_slide_bg">
                     <li class="slider-style">
                     <div class="scroll-left">
-                    <p>{{currentMediaDetails.movies_title}}</p>
+                    <p>{{currentMediaDetails.tv_title}}</p>
                     </div>
 						<div class="container-fluid">
 							<div class="w3ls_banner_txt text-right ml-auto pr-xl-5 pr-3">
-                                <h4 class="w3ls_pvt-title text-bl text-uppercase let mb-3"">{{currentMediaDetails.movies_title}}</h4>
-                                <h4 class="w3ls_pvt-title text-bl text-uppercase let mb-3"">{{currentMediaDetails.audio_artist}}  {{currentMediaDetails.audio_title}}</h4>
-                                <p class="media-details col-sm-12" v-html="currentMediaDetails.audio_storyline"> {{currentMediaDetails.audio_storyline}}</p>
-                                <p class="media-details col-sm-12" v-html="currentMediaDetails.movies_storyline"></p>
+                                <h4 class="w3ls_pvt-title text-bl text-uppercase let mb-3"">{{currentMediaDetails.tv_title}}</h4>
+                          
+                               
+                                <p class="media-details col-sm-12" v-html="currentMediaDetails.tv_storyline"></p>
 								<a href="#about" class="btn button-style mt-sm-5 mt-4">Watch Now</a>
 								
 								
@@ -100,12 +100,11 @@ export default {
 			<div class="banner-left-grids">
 				<div class="d-flex">
                     <div class="col-xl-2 col-md-3 col-sm-4 col-6 w3pvt-grids-1">
-                        <h5 class="media-time text-wh font-weight-bold let mb-2">{{currentMediaDetails.movies_runtime}}</h5>
+                        <h5 class="media-time text-wh font-weight-bold let mb-2">{{currentMediaDetails.tv_season}}</h5>
                        
 					</div>
                     <div class="col-xl-2 col-md-3 col-sm-4 col-6 w3pvt-grids-1 pl-4">
-                    <h5 class="media-year text-wh font-weight-bold let mb-2">{{currentMediaDetails.movies_year}}</h5>   
-                        <h5 class="media-year text-wh font-weight-bold let mb-2">{{currentMediaDetails.audio_year}}</h5>  
+                    <h5 class="media-year text-wh font-weight-bold let mb-2">{{currentMediaDetails.tv_year}}</h5>   
                            
 					
 					</div>
@@ -120,7 +119,7 @@ export default {
 
 <div class="belowHeader wow slideInLeft" data-wow-duration="2s" data-wow-delay="5s" style="z-index: 20;">
     <div class="movieBckgrd">
-    <video controls :src="'video/' + currentMediaDetails.movies_trailer" class="fs-video"></video>
+    <video controls :src="'video/tv/' + currentMediaDetails.tv_src" class="fs-video"></video>
             
     </div>
 
@@ -169,7 +168,7 @@ export default {
                         </li>
                     </ul>
                 <div class="thumbs-wrapper clearfix" style="border: 60px solid black;width: 100vw;" >
-                    <img v-if="activeMediaType == 'video'" v-for="media in retrievedMedia" :src="'images/video/' + media.movies_cover" alt="media thumb" @click="switchActiveMedia(media)" class="img-thumbnail rounded center-block media-thumb">
+                    <img v-if="activeMediaType == 'tv'" v-for="media in retrievedMedia" :src="'images/tv/' + media.tv_cover" alt="media thumb" @click="switchActiveMedia(media)" class="img-thumbnail rounded center-block media-thumb">
                    <div class="audioThumbSize"> <img v-if="activeMediaType == 'audio'" v-for="media in retrievedMedia" :src="'images/audio/' + media.audio_cover" alt="media thumb" @click="switchActiveMedia(media)" class="img-thumbnail rounded center-block media-thumb audio-thumb"><div>
                 </div>
                 </div>
@@ -182,7 +181,7 @@ export default {
     data() {
         return {
             // set the default to video -> will get a random video via query on create
-            activeMediaType: "video",
+            activeMediaType: "tv",
 
             // push first (or random) media object here (selected / filtered on create)
             currentMediaDetails: { 
@@ -206,7 +205,7 @@ export default {
     created: function() {
         console.log('params:', this.$route.params);
 
-        this.loadMedia(null, "video");
+        this.loadMedia(null, "tv");
     },
 
     methods: {

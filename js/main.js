@@ -5,6 +5,7 @@ import AdminComponent from './components/AdminComponent.js';
 import UserHomeComponent from './components/UserHomeComponent.js';
 import UserAudioComponent from './components/UserAudioComponent.js';
 import CreateComponent from './components/CreateComponent.js';
+import UserTVComponent from './components/UserTVComponent.js';
 
 let router = new VueRouter({
 
@@ -15,6 +16,7 @@ let router = new VueRouter({
       { path: '/users', name: 'users', component: UsersComponent },
       { path: '/userhome', name: "home", component: UserHomeComponent, props: true },
       { path: '/useraudio', name: "audio", component: UserAudioComponent},
+      { path: '/userTV', name: "TV", component: UserTVComponent},
       { path: '/admin', name: 'admin', component: AdminComponent }
   ]
 });

@@ -10,6 +10,9 @@
         } else {
             $tbl = "tbl_audio";
         }
+        if ($type == "tv") {
+            $tbl = "tbl_tv";
+        }
     }
 
     if(isset($_GET['filter'])){

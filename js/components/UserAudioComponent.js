@@ -51,7 +51,7 @@ export default {
                                                                                 </li>
 
                                                                                 <li id="bottomNav1">
-                                                                                <a>
+                                                                                <a href="index.html#/userTV">
                                                                                 <svg class="svg-inline--fa fa-tv fa-w-20" aria-hidden="true" data-prefix="fas" data-icon="tv" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" data-fa-i2svg=""><path fill="currentColor" d="M592 0H48C21.5 0 0 21.5 0 48v320c0 26.5 21.5 48 48 48h245.1v32h-160c-17.7 0-32 14.3-32 32s14.3 32 32 32h384c17.7 0 32-14.3 32-32s-14.3-32-32-32h-160v-32H592c26.5 0 48-21.5 48-48V48c0-26.5-21.5-48-48-48zm-16 352H64V64h512v288z"></path></svg>
                                                                                 </a>
 
@@ -157,13 +157,14 @@ export default {
 
               
                 
-                <div class="thumbs-wrapper clearfix" style="border: 60px solid black;" >
+                <div class="thumbs-wrapper clearfix" style="border: 60px solid black;width: 100vw;" >
                    
                    <div class="audioThumbSize"> <img v-if="activeMediaType == 'audio'" v-for="media in retrievedMedia" :src="'images/audio/' + media.audio_cover" alt="media thumb" @click="switchActiveMedia(media)" class="img-thumbnail rounded center-block media-thumb audio-thumb"><div>
                 </div>
                 </div>
             </div>       
         </div> <!-- end 2-up for media info -->
+    </div>
     </div>
     </div>
     `,
