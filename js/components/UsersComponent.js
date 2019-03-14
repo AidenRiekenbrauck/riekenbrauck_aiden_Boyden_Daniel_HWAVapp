@@ -3,25 +3,23 @@ import UserComponent from './UserComponent.js';
 export default {
 	template: `
 	<div class="container">
-	<link rel="stylesheet" href="css/login.css">
-	<div class="wrap">
+		<link rel="stylesheet" href="css/login.css">
+		<div class="wrap">
 
-		<div class="row">
-			<div class="col-sm-12">
+			<div class="row">
+				<div class="col-sm-12">
+				</div>
+
+
+				<user v-for="(user, index) in userList" :liveuser="user" :key="index"></user>     
+
 			</div>
-
-
-			<user v-for="(user, index) in userList" :liveuser="user" :key="index"></user>     
-
+			<div class="container">
+				<link rel="stylesheet" href="css/login.css">
+				<div class="overlay2">
+				</div>
+			</div>
 		</div>
-	<div class="container">
-	<link rel="stylesheet" href="css/login.css">
-	<div class="overlay2">
-
-	</div>
-	</div>
-	</div>
-	</div>
 	</div>
 	`,
 
