@@ -108,19 +108,19 @@ export default {
                     <!-- genres for video -->
                     <ul v-if="activeMediaType == 'video'" class="media-genres">
                         <li>
-                            <a href="action" @click.prevent="loadMedia('action', null)">Action</a>
+                            <a href="action" @click.prevent="loadMedia('action', 'video', currentuser.access)">Action</a>
                         </li>
                         <li>
-                            <a href="comedy" @click.prevent="loadMedia('comedy', null)">Comedy</a>
+                            <a href="comedy" @click.prevent="loadMedia('comedy', 'video', currentuser.access)">Comedy</a>
                         </li>
                         <li>
-                            <a href="family" @click.prevent="loadMedia('family', null)">Family</a>
+                            <a href="family" @click.prevent="loadMedia('family', 'video', currentuser.access)">Family</a>
                         </li>
                         <li>
-                            <a href="horror" @click.prevent="loadMedia('fantasy', null)">Fantasy</a>
+                            <a href="horror" @click.prevent="loadMedia('fantasy', 'video', currentuser.access)">Fantasy</a>
                         </li>
                         <li>
-                            <a href="horror" @click.prevent="loadMedia(null, null)">All</a>
+                            <a href="horror" @click.prevent="loadMedia(null, 'video', currentuser.access)">All</a>
                         </li>
                     </ul>
 
@@ -174,26 +174,29 @@ export default {
             retrievedMedia: [],
 
             // controls mute / unmute for video element
-            vidActive: false
+            vidActive: false,
+
         }
     },
 
     created: function() {
         console.log('params:', this.$route.params);
 
-        this.loadMedia(null, "video");
+        this.loadMedia(null, "video", this.currentuser.access);
     },
 
     methods: {
 
-        loadMedia(filter, mediaType) {
+        loadMedia(filter, mediaType, accessLevel) {
             // set the active media type
             if (this.activeMediaType !== mediaType && mediaType !== null) {
                 this.activeMediaType = mediaType;
             }
             // build the url based on any filter we pass in (will need to expand on this for audio)
 
-            let url = (filter == null) ? `./admin/index.php?media=${this.activeMediaType}` : `./admin/index.php?media=${this.mediaType}&&filter=${filter}`;
+            let url = (filter == null) ? `./admin/index.php?media=${this.activeMediaType}&&access=${accessLevel}` :  `./admin/index.php?media=${mediaType}&access=${accessLevel}&filter=${filter}`;
+
+            console.log(mediaType, accessLevel, filter)
 
             fetch(url)
                 .then(res => res.json())

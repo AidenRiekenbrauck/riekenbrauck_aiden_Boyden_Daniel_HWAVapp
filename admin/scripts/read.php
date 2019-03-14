@@ -1,10 +1,15 @@
 <?php 
 
-    function getAll($tbl){
+    function getAll($tbl, $access){
 
         include('connect.php');
 
-        $queryAll = 'SELECT * FROM '.$tbl;
+        if($access == 6) {
+            $queryAll = "SELECT * FROM {$tbl}";
+        } else {
+            $queryAll = "SELECT * FROM {$tbl} WHERE movies_rating <= {$access}";
+        }
+
         $runAll = $pdo->query($queryAll);
 
         $result = array();       
@@ -33,7 +38,7 @@
         }
     }
 
-    function filterResults($tbl, $tbl2, $tbl3, $col, $col2, $col3, $filter) {
+    function filterResults($tbl, $tbl2, $tbl3, $col, $col2, $col3, $filter, $access) {
         include('connect.php');
         //TODO: write the SQL query to fetching everything 
         // from the linking tables $tbl, $tbl_2, $tbl_3
@@ -43,6 +48,7 @@
         $filterQuery.= 'WHERE a.' .$col.' = c.'.$col;
         $filterQuery.= ' AND b.' .$col2.' = c.'.$col2;
         $filterQuery.= ' AND b.' .$col3.' = "'.$filter.'"';
+        $filterQuery.= " AND movies_rating <= {$access}";
         //echo $filterQuery; 
         //exit;
         $runQuery = $pdo->query($filterQuery);
