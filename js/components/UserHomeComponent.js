@@ -6,7 +6,7 @@ export default {
     <link rel="stylesheet" href="css/style.css">
     <!-- render this if we're viewing television or film -->
                                                                                     <header class="col-sm-12 fixed-top">
-                                                                                                                                                                                    
+
                                                                                     <nav>
                                                                                     <div class="wrapper">
                                                                                 <!-- <input type="text" placeholder="search..."> -->
@@ -66,12 +66,12 @@ export default {
 
 
 
-    
+
 
 
                                                                                 <link rel="stylesheet" href="css/login.css">
 <div class="main-top overlay4" id="home">
-	
+
 
 		<!-- banner -->
 		<div class="banner_w3lspvt">
@@ -88,12 +88,12 @@ export default {
                                 <p class="media-details col-sm-12" v-html="currentMediaDetails.audio_storyline"> {{currentMediaDetails.audio_storyline}}</p>
                                 <p class="media-details col-sm-12" v-html="currentMediaDetails.movies_storyline"></p>
 								<a href="#about" class="btn button-style mt-sm-5 mt-4">Watch Now</a>
-								
-								
+
+
 							</div
 						</div>
 					</li>
-					
+
 				</ul>
 
 			</div>
@@ -101,13 +101,13 @@ export default {
 				<div class="d-flex">
                     <div class="col-xl-2 col-md-3 col-sm-4 col-6 w3pvt-grids-1">
                         <h5 class="media-time text-wh font-weight-bold let mb-2">{{currentMediaDetails.movies_runtime}}</h5>
-                       
+
 					</div>
                     <div class="col-xl-2 col-md-3 col-sm-4 col-6 w3pvt-grids-1 pl-4">
-                    <h5 class="media-year text-wh font-weight-bold let mb-2">{{currentMediaDetails.movies_year}}</h5>   
-                        <h5 class="media-year text-wh font-weight-bold let mb-2">{{currentMediaDetails.audio_year}}</h5>  
-                           
-					
+                    <h5 class="media-year text-wh font-weight-bold let mb-2">{{currentMediaDetails.movies_year}}</h5>
+                        <h5 class="media-year text-wh font-weight-bold let mb-2">{{currentMediaDetails.audio_year}}</h5>
+
+
 					</div>
 					<div class="col-xl-8 col-md-6 col-sm-4 w3pvt-grids-2">
 					</div>
@@ -121,7 +121,7 @@ export default {
 <div class="belowHeader wow slideInLeft" data-wow-duration="2s" data-wow-delay="5s" style="z-index: 20;">
     <div class="movieBckgrd">
     <video controls :src="'video/' + currentMediaDetails.movies_trailer" class="fs-video"></video>
-            
+
     </div>
 
 
@@ -173,10 +173,21 @@ export default {
                    <div class="audioThumbSize"> <img v-if="activeMediaType == 'audio'" v-for="media in retrievedMedia" :src="'images/audio/' + media.audio_cover" alt="media thumb" @click="switchActiveMedia(media)" class="img-thumbnail rounded center-block media-thumb audio-thumb"><div>
                 </div>
                 </div>
-            </div>       
+            </div>
         </div> <!-- end 2-up for media info -->
     </div>
     </div>
+    <footer class="foot col-sm-12 fixed-bot">
+      <h1 class="foot-social">Check out our social media</h1>
+      <div class="social">
+        <a href="https://twitter.com/?lang=en">TWITTER</a>
+        <a href="https://www.instagram.com/?hl=en">INSTAGRAM</a>
+        <a href="https://www.facebook.com/">FACEBOOK</a>
+      </div>
+      <div class="copy">
+        <p>©2019 ROKU APP</p>
+      </div>
+    </footer>
     `,
 
     data() {
@@ -185,7 +196,7 @@ export default {
             activeMediaType: "video",
 
             // push first (or random) media object here (selected / filtered on create)
-            currentMediaDetails: { 
+            currentMediaDetails: {
                 source: "avengers.mp4",
             },
 
@@ -222,11 +233,11 @@ export default {
 
             fetch(url)
                 .then(res => res.json())
-                .then(data => {                    
+                .then(data => {
                     // we're gettin them all, dump it all in the media container
                     this.retrievedMedia = data;
                     // grab the first one in the list and make it active
-                    this.currentMediaDetails = data[0];                    
+                    this.currentMediaDetails = data[0];
                 })
             .catch(function(error) {
                 console.error(error);

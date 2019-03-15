@@ -149,7 +149,7 @@ header {
         width: 100%;
     }
 
-    
+
 
     .menu li a.active,
     .menu li a:hover {
@@ -379,7 +379,7 @@ h3.w3ls_pvt-title {
 
 @media(max-width: 1366px) {
 
-   
+
 
     .csslider>ul>li {
         min-height: 740px;
@@ -624,5 +624,43 @@ h3.w3ls_pvt-title {
     .social-icons-footer {
         margin-top: 1em !important;
     }
+
 }
 
+.foot-social{
+  font-size: 36px;
+}
+
+.foot{
+
+  height: 20%;
+
+}
+
+.social{
+
+  text-align: center;
+  padding: 20px;
+  text-decoration: none;
+}
+
+.social a{
+
+
+  padding-left: 20px;
+
+}
+
+.social a:hover{
+
+  text-decoration: none;
+  color: white;
+
+
+}
+
+.audio_foot{
+  bottom: 0;
+  position: absolute;
+  margin-top:  50px;
+}

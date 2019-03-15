@@ -6,7 +6,7 @@ export default {
     <link rel="stylesheet" href="css/style.css">
     <!-- render this if we're viewing television or film -->
                                                                                     <header class="col-sm-12 fixed-top">
-                                                                                                                                                                                    
+
                                                                                     <nav>
                                                                                     <div class="wrapper">
                                                                                 <!-- <input type="text" placeholder="search..."> -->
@@ -66,13 +66,13 @@ export default {
 
 
 
-    
+
 
 
 
                                                                                 <link rel="stylesheet" href="css/login.css">
     <div class="main-top overlay5" id="home">
-	
+
 		<!-- banner -->
 		<div class="banner_w3lspvt">
 			<div class="csslider infinity" id="slider1">
@@ -83,31 +83,31 @@ export default {
                     </div>
 						<div class="container-fluid">
 							<div class="w3ls_banner_txt text-right ml-auto pr-xl-5 pr-3">
-                                
+
                                 <h4 class="w3ls_pvt-title text-bl text-uppercase let mb-3"">{{currentMediaDetails.audio_artist}}  {{currentMediaDetails.audio_title}}</h4>
                                 <p class="media-details col-sm-12" v-html="currentMediaDetails.audio_storyline"> {{currentMediaDetails.audio_storyline}}</p>
-                               
+
 								<a href="#about" class="btn button-style mt-sm-5 mt-4">Watch Now</a>
-								
-								
+
+
 							</div
 						</div>
 					</li>
-					
+
 				</ul>
 
 			</div>
 			<div class="banner-left-grids">
 				<div class="d-flex">
                     <div class="col-xl-2 col-md-3 col-sm-4 col-6 w3pvt-grids-1">
-                   
-                       
+
+
 					</div>
                     <div class="col-xl-2 col-md-3 col-sm-4 col-6 w3pvt-grids-1 pl-4">
-                    
-                        <h5 class="media-year text-wh font-weight-bold let mb-2">{{currentMediaDetails.audio_year}}</h5>  
-                           
-					
+
+                        <h5 class="media-year text-wh font-weight-bold let mb-2">{{currentMediaDetails.audio_year}}</h5>
+
+
 					</div>
 					<div class="col-xl-8 col-md-6 col-sm-4 w3pvt-grids-2">
 					</div>
@@ -120,7 +120,7 @@ export default {
 
 <div class="belowHeader wow slideInLeft" data-wow-duration="2s" data-wow-delay="5s" style="z-index: 20;">
     <div class="audio-wrapper">
-    
+
     <img :src="'images/audio/' + currentMediaDetails.audio_cover" alt="album art" class="img-fluid"/>
     <audio autoplay controls :src="'audio/' + currentMediaDetails.audio_src"/>
     </div>
@@ -134,7 +134,7 @@ export default {
             <div class="media-info center">
                 <!-- genres for video -->
                     <ul v-if="activeMediaType == 'audio'" class="media-genres">
-                 
+
 
 
 
@@ -155,18 +155,22 @@ export default {
                         </li>
                     </ul>
 
-              
-                
+
+
                 <div class="thumbs-wrapper clearfix" style="border: 60px solid black;width: 100vw;" >
-                   
+
                    <div class="audioThumbSize"> <img v-if="activeMediaType == 'audio'" v-for="media in retrievedMedia" :src="'images/audio/' + media.audio_cover" alt="media thumb" @click="switchActiveMedia(media)" class="img-thumbnail rounded center-block media-thumb audio-thumb"><div>
                 </div>
                 </div>
-            </div>       
+            </div>
+
         </div> <!-- end 2-up for media info -->
+
     </div>
     </div>
     </div>
+
+
     `,
 
     data() {
@@ -175,7 +179,7 @@ export default {
             activeMediaType: "audio",
 
             // push first (or random) media object here (selected / filtered on create)
-            currentMediaDetails: { 
+            currentMediaDetails: {
                 source: "avengers.mp4",
             },
 
@@ -212,11 +216,11 @@ export default {
 
             fetch(url)
                 .then(res => res.json())
-                .then(data => {                    
+                .then(data => {
                     // we're gettin them all, dump it all in the media container
                     this.retrievedMedia = data;
                     // grab the first one in the list and make it active
-                    this.currentMediaDetails = data[0];                    
+                    this.currentMediaDetails = data[0];
                 })
             .catch(function(error) {
                 console.error(error);

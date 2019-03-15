@@ -1,4 +1,5 @@
-<?php 
+
+<?php
 
     if (isset($_GET['allusers'])) {
         include('connect.php');
