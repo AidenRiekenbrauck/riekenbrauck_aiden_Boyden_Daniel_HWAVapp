@@ -31,3 +31,4 @@ Step Three: place root folder into /MAMP/htdocs
 Step Four: test website in, ideally, Firefox. use link (http://localhost:8888/  **project name**  /) to enable database functions. 
 
 > Video files not included due to size. If video files needed contact via github message
+

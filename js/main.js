@@ -1,83 +1,96 @@
-(() => {
 
-    const vm = new Vue({
-        el : "#app",
+import UsersComponent from './components/UsersComponent.js';
+import LoginComponent from './components/LoginComponent.js';
+import AdminComponent from './components/AdminComponent.js';
+import UserHomeComponent from './components/UserHomeComponent.js';
+import UserAudioComponent from './components/UserAudioComponent.js';
+import CreateComponent from './components/CreateComponent.js';
+import UserTVComponent from './components/UserTVComponent.js';
 
-        data : {
-            welcomemessage : "movie app",
+let router = new VueRouter({
 
-            videoData : [],
-            singleData : [],
+  routes: [
+      { path: '/', redirect: { name: "login"} },
+      { path: '/login', name: "login", component: LoginComponent },
+      { path: '/create', name: "create", component: CreateComponent },
+      { path: '/users', name: 'users', component: UsersComponent },
+      { path: '/userhome', name: "home", component: UserHomeComponent, props: true },
+      { path: '/useraudio', name: "audio", component: UserAudioComponent},
+      { path: '/userTV', name: "TV", component: UserTVComponent},
+      { path: '/admin', name: 'admin', component: AdminComponent }
+  ]
+});
 
-            title : "",
-			author : "",
-			desc : "",
-			duration : "",
-			uploadDate : "",
-			url : "",
-            coverImage : "",
-            rating : "",
-            visits : "",
+const vm = new Vue({
+ 
+  data: {
+    authenticated: false,
+    administrator: false,
 
-            showDetails : false
-        },
+    genericMessage: "hello from the parent",
 
-        created : function(){
-            //get all the movie data on page load
-            this.fetchMovieData(null);
-        },
+    mockAccount: {
+      username: "user",
+      password: "password"
+    },
 
-        methods : {
-            login() {
-                //stub
-                console.log('login');
-            },
+    user: [],
 
-            fetchSingle(e) {
-                // debugger;
-                this.fetchMovieData(e.currentTarget.dataset.movie);
-            },
+    //currentUser: {},
 
-            loadMovie(e) {
-                // debugger;
-                e.preventDefault();
+    toastmessage: "Login failed!"
+  },
 
-                dataKey = e.currentTarget.getAttribute("href");
-                currentData = this.videoData.filter(video =>video.video_url === dataKey);
+  created: function() {
+    // do a session check and set authenticated to true if the session still exists
+    // if the cached user exists, then just navigate to their user home page
 
-                this.title = currentData[0].name;
-				this.author = currentData[0].author;
-				this.desc = currentData[0].vidDesc;
-				this.duration = currentData[0].duration_sec;
-				this.uploadDate = currentData[0].uploadDate;
-                this.url = dataKey;
-                this.coverImage = dataKey;
-                this.rating = currentData[0].rating;
-                this.visits = currentData[0].visits;
+    // the localstorage session will persist until logout
 
-                this.showDetails = true;
-            },
+    if (localStorage.getItem("cachedUser")) {
+      let user = JSON.parse(localStorage.getItem("cachedUser"));
+      this.authenticated = true;
+      // params not setting properly, so this route needs to be debugged a bit...
+      this.$router.push({ name: "home", params: { currentuser: user }});
+    } else {
+      this.$router.push({ path: "/login"} );
+    }    
+  },
 
-            fetchMovieData(movies) {
-                //this is a ternary statement (Shorthand for if/else) left of the : is true, right is false
-                url = movies ? `./includes/index.php?movie=${movies}` : './includes/index.php';
+  methods: {
+    setAuthenticated(status, data) {
+      this.authenticated = status;
+      this.user = data;
+    },
 
-                fetch(url)
-                .then(res => res.json())
-                .then(data => {
-                    // console.log(data);
+    popError(errorMsg) {
+      // set the error message string and show the toast notification
+      this.toastmessage = errorMsg;
+      $('.toast').toast('show');
+    },
 
-                    if(movies) {
-                        //store this in the single movie result above
-                    } else {
-                        //initial data grab, store in the videodata array
-                        this.videoData = data;
-                    }
-                })
-                .catch(function(error){
-                    // console.log(error);
-                });
-            }
-        }
-    })
-})();
+    logout() {
+      // delete local session
+      if (localStorage.getItem("cachedUser")) {
+        localStorage.removeItem("cachedUser");
+      }
+      // push user back to login page
+      this.$router.push({ path: "/login" });
+      this.authenticated = false;
+      
+      
+    }
+  },
+
+  router: router
+}).$mount("#app");
+
+router.beforeEach((to, from, next) => {
+  console.log('router guard fired!', to, from, vm.authenticated);
+
+  if (vm.authenticated == false) {
+    next("/login");
+  } else {
+    next();
+  }
+});
