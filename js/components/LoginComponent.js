@@ -2,22 +2,16 @@ export default {
     template: `
     
     <div class="container">
-    <link rel="stylesheet" href="css/login.css">
-    <div class="overlay">
-  <div class="wrap">
-   <h1>Roku</h1>
-   <input class="input-area form-control" id="inlineFormInputName" type="text" placeholder="Username" v-model="input.username" required >
-   <input class="input-area form-control" id="inlineFormPassword" type="password" placeholder="Password" v-model="input.password" required>
-    <input type="submit" value="Sign In" class="btn" id="login-btn" v-on:click.prevent="login()">
-    <a href="index.html#/create"><i class="fa fa-user"></i>Create an Account</a>
-  </div>
-</div>
-    
-    
-    
-    
-    
-    
+        <link rel="stylesheet" href="css/login.css">
+        <div class="overlay">
+            <div class="wrap">
+                <h1>Roku</h1>
+                <input class="input-area form-control" id="inlineFormInputName" type="text" placeholder="Username" v-model="input.username" required >
+                <input class="input-area form-control" id="inlineFormPassword" type="password" placeholder="Password" v-model="input.password" required>
+                <input type="submit" value="Sign In" class="btn" id="login-btn" v-on:click.prevent="login()">
+                <a href="index.html#/create"><i class="fa fa-user"></i>Create an Account</a>
+            </div>
+        </div>   
     </div>
      `,
  

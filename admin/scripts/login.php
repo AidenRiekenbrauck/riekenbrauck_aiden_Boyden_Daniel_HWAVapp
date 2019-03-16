@@ -34,7 +34,7 @@ require_once('connect.php');
       $_SESSION['user_name'] = $found_user['user_name'];      
 
       //Update user login IP
-			$update_ip_query = 'UPDATE tbl_user SET user_ip=:ip WHERE user_id=:id';
+			$update_ip_query = 'UPDATE tbl_user SET user_ip = :ip WHERE user_id = :id';
 			$update_ip_set = $pdo->prepare($update_ip_query);
 			$update_ip_set->execute(
 				array(

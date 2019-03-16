@@ -9,15 +9,15 @@ export default {
     <h1>Create an Account</h1>
     <input class="input-area form-control" id="inlineFormInputName" type="text" placeholder="Username" v-model="input.username" required >
     <input class="input-area form-control" id="inlineFormPassword" type="password" placeholder="Password" v-model="input.password" required>
-    <select name="lvllist" class="userLevel">
-             <option value="">Select User Level</option>
-             <option value="2">G</option>
-             <option value="1">PG</option>
-             <option value="1">PG-13</option>
-             <option value="1">R</option>
-             <option value="1">NC-17</option>
+    <select required name="lvllist" class="userLevel" v-model="select.access">
+             <option disabled selected value="">Select User Level</option>
+             <option value="1">G</option>
+             <option value="2">PG</option>
+             <option value="3">PG-13</option>
+             <option value="4">R</option>
+             <option value="5">NC-17</option>
          </select>
-     <input type="submit"  value="Create Account" class="btn" id="login-btn" v-on:click.prevent="login()">
+     <input type="submit"  value="Create Account" class="btn" id="login-btn" v-on:click.prevent="createUser()">
   </div>
 </div>
     
@@ -32,46 +32,36 @@ export default {
      data() {
          return {
              input: {
-                 username: "",
-                 password: ""
+                username: "",
+                password: ""
              },
 
+             select: {
+                access: ""
+             }
          }
      },
  
      methods: {
-         login() {
-            //console.log(this.$parent.mockAccount.username);
+         createUser() {
  
-            if(this.input.username != "" && this.input.password != "") {
-            // fetch the user from the DB
-            // generate the form data
-            let formData = new FormData();
+            if(this.input.username != "" && this.input.password != "" && this.select.access !="") {
+                // fetch the user from the DB
+                // generate the form data
+                let formData = new FormData();
 
-             formData.append("username", this.input.username);
-             formData.append("password", this.input.password);
+                formData.append("username", this.input.username);
+                formData.append("password", this.input.password);
+                formData.append("access", this.select.access)
 
-             let url = `./admin/scripts/admin_login.php`;
- 
-             fetch(url, {
-                    method: 'POST',
-                    body: formData
-                })
-                 .then(res => res.json())
-                 .then(data => {
-                    if (typeof data != "object") { // means that we're not getting a user object back
-                        console.warn(data);
-                        console.error("authentication failed, please try again");
-                        this.$emit("autherror", data);
-                    } else {
-                        this.$emit("authenticated", true, data[0]);
-                        this.$router.replace({ name: "users" });
-                    }
-                })
-             .catch(function(error) { 
-                 console.log(error);
-             });
-        } else {
+                let url = `./admin/scripts/create_user.php`;
+    
+                fetch(url, {
+                        method: 'POST',
+                        body: formData
+                    });
+                    
+            } else {
                  console.log("A username and password must be present");
             }
         }
