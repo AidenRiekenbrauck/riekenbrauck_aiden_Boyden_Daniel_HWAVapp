@@ -87,7 +87,7 @@ export default {
                                 <h4 class="w3ls_pvt-title text-bl text-uppercase let mb-3"">{{currentMediaDetails.audio_artist}}  {{currentMediaDetails.audio_title}}</h4>
                                 <p class="media-details col-sm-12" v-html="currentMediaDetails.audio_storyline"> {{currentMediaDetails.audio_storyline}}</p>
                                
-								<a href="#about" class="btn button-style mt-sm-5 mt-4">Watch Now</a>
+                                <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.roku.flashback.com%2Findex.html%2Fuserhome&amp;src=sdkpreparse" target="_blank" class="btn button-style mt-sm-5 mt-4">Share to Facebook</a>
 								
 								
 							</div
